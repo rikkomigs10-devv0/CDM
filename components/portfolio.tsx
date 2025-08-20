@@ -1,15 +1,16 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { X, ArrowLeft } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
 
 const projects = [
   {
     title: "Downtown Office Complex",
     category: "Commercial",
-    image: "/placeholder-lxaq6.png",
+    image: "/downtown-office-complex.png",
     description:
       "A state-of-the-art 25-story office complex located in the heart of downtown, featuring modern architectural design and sustainable construction practices. This project spans 450,000 square feet and includes premium office spaces, retail outlets, and underground parking for 800 vehicles.\n\nThe building incorporates cutting-edge technology including smart building systems, energy-efficient HVAC, LED lighting throughout, and advanced security systems. The exterior features a striking glass and steel facade with integrated solar panels that contribute to the building's LEED Platinum certification.\n\nKey features include: high-speed elevators, flexible floor plans ranging from 5,000 to 50,000 square feet, rooftop garden and event space, fitness center, conference facilities, and ground-floor retail spaces. The project was completed 2 months ahead of schedule and 5% under budget, demonstrating our commitment to excellence and efficiency.\n\nConstruction challenges included working in a dense urban environment with limited staging area, coordinating with multiple utility companies for infrastructure upgrades, and maintaining traffic flow during construction. Our team successfully navigated these challenges through careful planning, innovative construction techniques, and strong community partnerships.",
   },
@@ -23,7 +24,7 @@ const projects = [
   {
     title: "Highway Bridge Project",
     category: "Infrastructure",
-    image: "/placeholder-i4hr2.png",
+    image: "/highway-bridge-construction.png",
     description:
       "A critical infrastructure project involving the construction of a 1.2-mile cable-stayed bridge spanning the metropolitan river, designed to accommodate both vehicular traffic and pedestrian walkways. This engineering marvel features a 400-foot main span with twin towers rising 300 feet above the water.\n\nThe bridge design incorporates seismic-resistant technology, corrosion-resistant materials, and advanced drainage systems to ensure longevity and safety. The structure includes six lanes of traffic, dedicated bike lanes, and scenic pedestrian walkways with viewing areas.\n\nConstruction presented unique challenges including deep-water foundation work, coordination with maritime traffic, environmental protection measures for local wildlife, and weather-dependent operations. Our team utilized specialized marine construction equipment, including floating cranes and cofferdams for underwater construction.\n\nThe project required extensive collaboration with environmental agencies, transportation departments, and local communities. We implemented innovative construction methods to minimize environmental impact, including fish-friendly construction timing, water quality monitoring, and habitat restoration programs. The completed bridge reduces commute times by 30% and serves as a vital economic link for the region.",
   },
@@ -62,22 +63,6 @@ export function Portfolio() {
     setSelectedProject(null)
   }
 
-  const truncateDescription = (description: string, maxLength = 700) => {
-    if (description.length <= maxLength) {
-      return description
-    }
-
-    // Find the last complete sentence within the limit
-    const truncated = description.substring(0, maxLength)
-    const lastSentence = truncated.lastIndexOf(".")
-    const lastSpace = truncated.lastIndexOf(" ")
-
-    // Use last sentence if it's reasonably close, otherwise use last space
-    const cutPoint = lastSentence > maxLength - 100 ? lastSentence + 1 : lastSpace
-
-    return description.substring(0, cutPoint) + "..."
-  }
-
   return (
     <>
       <section id="portfolio" className="py-20 bg-muted/30">
@@ -99,10 +84,13 @@ export function Portfolio() {
                 onClick={() => handleProjectClick(project)}
               >
                 <div className="relative overflow-hidden">
-                  <img
+                  <Image
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
+                    width={400}
+                    height={256}
                     className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+                    priority={index < 3}
                   />
                   <div
                     className={`absolute inset-0 bg-primary/80 transition-opacity duration-300 flex items-center justify-center ${
@@ -123,52 +111,62 @@ export function Portfolio() {
       </section>
 
       {selectedProject && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-background rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden">
-            <div className="flex flex-col lg:flex-row">
-              {/* Image section */}
-              <div className="lg:w-1/2">
-                <div className="relative">
-                  <img
-                    src={selectedProject.image || "/placeholder.svg"}
-                    alt={selectedProject.title}
-                    className="w-full h-64 lg:h-full object-cover"
-                  />
-                  <Button
-                    variant="secondary"
-                    size="icon"
-                    className="absolute top-4 right-4 bg-background/80 hover:bg-background"
-                    onClick={closeModal}
-                  >
-                    <X className="h-4 w-4" />
-                  </Button>
-                </div>
+        <div className="fixed inset-0 bg-black/70 z-50 overflow-y-auto">
+          <div className="min-h-screen flex items-center justify-center p-4 md:p-8">
+            <div className="bg-background rounded-lg w-full max-w-7xl shadow-2xl">
+              {/* Desktop: Back to Projects button fixed at top-right */}
+              <div className="hidden md:block absolute top-6 right-6 z-10">
+                <Button
+                  onClick={closeModal}
+                  className="px-6 py-2 rounded-lg hover:shadow-md transition-all duration-200"
+                  size="lg"
+                >
+                  <ArrowLeft className="h-4 w-4 mr-2" />
+                  Back to Projects
+                </Button>
               </div>
 
-              {/* Content section */}
-              <div className="lg:w-1/2 p-6 lg:p-8">
-                <div className="mb-6">
-                  <span className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium mb-4">
-                    {selectedProject.category}
-                  </span>
-                  <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-6">{selectedProject.title}</h3>
+              <div className="flex flex-col md:flex-row min-h-[80vh]">
+                <div className="md:w-2/3 relative">
+                  <Image
+                    src={selectedProject.image || "/placeholder.svg"}
+                    alt={selectedProject.title}
+                    fill
+                    className="object-cover h-full w-full rounded-t-lg md:rounded-l-lg md:rounded-tr-none"
+                    sizes="(max-width: 768px) 100vw, 65vw"
+                    priority
+                  />
                 </div>
 
-                <div className="mb-8">
-                  <p className="text-muted-foreground leading-relaxed text-base lg:text-lg">
-                    {truncateDescription(selectedProject.description)}
-                  </p>
-                </div>
+                <div className="md:w-1/3 p-6 md:p-8 flex flex-col">
+                  <div className="mb-6">
+                    <span className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium mb-4">
+                      {selectedProject.category}
+                    </span>
+                    <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6 leading-tight">
+                      {selectedProject.title}
+                    </h3>
+                  </div>
 
-                <div className="flex justify-center lg:justify-start">
-                  <Button
-                    onClick={closeModal}
-                    className="px-6 py-2 rounded-lg hover:shadow-md transition-all duration-200"
-                    size="lg"
-                  >
-                    <ArrowLeft className="h-4 w-4 mr-2" />
-                    Back to Projects
-                  </Button>
+                  <div className="flex-1 overflow-y-auto">
+                    <div className="max-w-none pr-2">
+                      <p className="text-muted-foreground leading-relaxed text-sm md:text-base whitespace-pre-line">
+                        {selectedProject.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Mobile: Back to Projects button centered under text */}
+                  <div className="md:hidden mt-6 flex justify-center">
+                    <Button
+                      onClick={closeModal}
+                      className="px-6 py-2 rounded-lg hover:shadow-md transition-all duration-200"
+                      size="lg"
+                    >
+                      <ArrowLeft className="h-4 w-4 mr-2" />
+                      Back to Projects
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
