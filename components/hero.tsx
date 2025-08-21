@@ -15,9 +15,10 @@ export function Hero() {
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url('/dusk-construction.png')`,
-        }}
+       style={{
+  backgroundImage: "url('/HeroHeader.png')",
+}}
+
       >
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-secondary/80 via-secondary/60 to-transparent"></div>
@@ -27,15 +28,16 @@ export function Hero() {
       <div className="relative z-10 container mx-auto px-4 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-            LEADERS IN QUALITY
+            
             <br />
-            <span className="text-primary">CONSTRUCTION</span> AND
+            <span className="text-primary">CDM</span> ENTERPRISE
             <br />
-            INFRASTRUCTURE
           </h1>
-
+            <p className="text-lg md:text-xl text-white/90 mb-4 max-w-3xl mx-auto font-medium">
+            Committed. Diligent. Meaningful.
+             </p>
           <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Building tomorrow's world with precision, innovation, and unwavering commitment to excellence.
+            Delivering tailored-fit solutions with integrity and impact.
           </p>
 
           <Button

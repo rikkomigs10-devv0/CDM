@@ -36,8 +36,8 @@ export function Navigation() {
               <div className="w-6 h-6 border-2 border-primary-foreground rounded-sm transform rotate-45"></div>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-foreground">SPHERE</h1>
-              <p className="text-sm text-muted-foreground -mt-1">CONSTRUCTIONS</p>
+              <h1 className="text-xl font-bold text-foreground">CDM </h1>
+              <p className="text-sm text-muted-foreground -mt-1">Enterprise</p>
             </div>
           </div>
 
