@@ -65,10 +65,10 @@ export function Portfolio() {
 
   return (
     <>
-      <section id="portfolio" className="py-20 bg-muted/30">
+      <section id="portfolio" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Projects</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Projects</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Showcasing our commitment to excellence through completed projects across various sectors
             </p>
@@ -78,7 +78,7 @@ export function Portfolio() {
             {projects.map((project, index) => (
               <Card
                 key={index}
-                className="group overflow-hidden border-border hover:shadow-xl transition-all duration-300 cursor-pointer"
+                className="group overflow-hidden border-0 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => handleProjectClick(project)}
@@ -93,14 +93,14 @@ export function Portfolio() {
                     priority={index < 3}
                   />
                   <div
-                    className={`absolute inset-0 bg-primary/80 transition-opacity duration-300 flex items-center justify-center ${
+                    className={`absolute inset-0 bg-white/90 transition-opacity duration-300 flex items-center justify-center ${
                       hoveredIndex === index ? "opacity-100" : "opacity-0"
                     }`}
                   >
-                    <div className="text-center text-primary-foreground">
+                    <div className="text-center text-foreground">
                       <h3 className="text-xl font-bold mb-2">{project.title}</h3>
                       <p className="text-sm mb-2">{project.category}</p>
-                      <p className="text-xs opacity-90">Click to view details</p>
+                      <p className="text-xs opacity-70">Click to view details</p>
                     </div>
                   </div>
                 </div>
@@ -111,14 +111,14 @@ export function Portfolio() {
       </section>
 
       {selectedProject && (
-        <div className="fixed inset-0 bg-black/70 z-50 overflow-y-auto">
-          <div className="min-h-screen flex items-center justify-center p-4 md:p-8">
-            <div className="bg-background rounded-lg w-full max-w-7xl shadow-2xl">
+        <div className="fixed inset-0 bg-black/80 z-50 overflow-y-auto">
+          <div className="min-h-screen flex items-center justify-center p-2 sm:p-4 md:p-8">
+            <div className="bg-background rounded-lg w-full max-w-7xl shadow-2xl relative mx-2 sm:mx-4">
               {/* Desktop: Back to Projects button fixed at top-right */}
-              <div className="hidden md:block absolute top-6 right-6 z-10">
+              <div className="hidden md:block absolute top-4 lg:top-6 right-4 lg:right-6 z-10">
                 <Button
                   onClick={closeModal}
-                  className="px-6 py-2 rounded-lg hover:shadow-md transition-all duration-200"
+                  className="px-4 lg:px-6 py-2 rounded-lg hover:shadow-md transition-all duration-200"
                   size="lg"
                 >
                   <ArrowLeft className="h-4 w-4 mr-2" />
@@ -126,41 +126,42 @@ export function Portfolio() {
                 </Button>
               </div>
 
-              <div className="flex flex-col md:flex-row min-h-[80vh]">
-                <div className="md:w-2/3 relative">
+              <div className="flex flex-col md:flex-row min-h-[70vh] sm:min-h-[80vh]">
+                <div className="md:w-2/3 relative h-64 sm:h-80 md:h-auto">
                   <Image
                     src={selectedProject.image || "/placeholder.svg"}
                     alt={selectedProject.title}
                     fill
                     className="object-cover h-full w-full rounded-t-lg md:rounded-l-lg md:rounded-tr-none"
-                    sizes="(max-width: 768px) 100vw, 65vw"
+                    sizes="(max-width: 768px) 100vw, 67vw"
                     priority
+                    quality={95}
                   />
                 </div>
 
-                <div className="md:w-1/3 p-6 md:p-8 flex flex-col">
-                  <div className="mb-6">
-                    <span className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium mb-4">
+                <div className="md:w-1/3 p-4 sm:p-6 md:p-8 flex flex-col">
+                  <div className="mb-4 sm:mb-6">
+                    <span className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-4">
                       {selectedProject.category}
                     </span>
-                    <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6 leading-tight">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4 sm:mb-6 leading-tight">
                       {selectedProject.title}
                     </h3>
                   </div>
 
                   <div className="flex-1 overflow-y-auto">
-                    <div className="max-w-none pr-2">
-                      <p className="text-muted-foreground leading-relaxed text-sm md:text-base whitespace-pre-line">
+                    <div className="max-w-none pr-1 sm:pr-2">
+                      <p className="text-muted-foreground leading-relaxed text-xs sm:text-sm md:text-base whitespace-pre-line">
                         {selectedProject.description}
                       </p>
                     </div>
                   </div>
 
                   {/* Mobile: Back to Projects button centered under text */}
-                  <div className="md:hidden mt-6 flex justify-center">
+                  <div className="md:hidden mt-4 sm:mt-6 flex justify-center">
                     <Button
                       onClick={closeModal}
-                      className="px-6 py-2 rounded-lg hover:shadow-md transition-all duration-200"
+                      className="px-4 sm:px-6 py-2 rounded-lg hover:shadow-md transition-all duration-200"
                       size="lg"
                     >
                       <ArrowLeft className="h-4 w-4 mr-2" />

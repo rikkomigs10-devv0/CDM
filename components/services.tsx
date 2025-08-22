@@ -26,10 +26,10 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="py-20 bg-background">
+    <section id="services" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Services</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Services</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Comprehensive construction solutions tailored to meet your unique project requirements
           </p>
@@ -37,7 +37,7 @@ export function Services() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-border">
+            <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-0 shadow-sm">
               <CardContent className="p-6 text-center">
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                   <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
