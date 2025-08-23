@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
   "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d out"
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d out -b gh-pages --dotfiles"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
