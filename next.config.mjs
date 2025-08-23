@@ -1,21 +1,28 @@
 // next.config.mjs
 /** @type {import('next').NextConfig} */
-const isProd = process.env.NODE_ENV === 'production'
+const isProd = process.env.NODE_ENV === "production"
 
-// ⚠️ If your site will be at https://USERNAME.github.io/REPO_NAME
-// set repo below and leave isProjectPage = true.
-// If you’re using a user/org root (https://USERNAME.github.io), set isProjectPage = false.
-const repo = 'REPO_NAME'         // <-- change to your repo name, e.g. 'CDM'
-const isProjectPage = true       // true for project pages, false for user/org root
+// 👉 Change this to your repo name exactly as it appears on GitHub.
+const repo = "CDM"
 
-const nextConfig = {
-  output: 'export',              // writes static site to ./out
-  images: { unoptimized: true }, // needed for export
-  trailingSlash: true,           // helps with static hosting
+export default {
+  // Use static export so we can host on GitHub Pages
+  output: "export",
 
-  // These ensure assets/links work on GitHub Pages project sites
-  basePath: isProd && isProjectPage ? `/${repo}` : '',
-  assetPrefix: isProd && isProjectPage ? `/${repo}/` : undefined,
+  // Make the site work from https://<user>.github.io/<repo>/
+  basePath: isProd ? `/${repo}` : "",
+  assetPrefix: isProd ? `/${repo}/` : "",
+
+  // next/image must be unoptimized for static export
+  images: {
+    unoptimized: true,
+  },
+
+  // Optional but helps avoid 404s on GH Pages when requesting folders
+  trailingSlash: true,
+
+  // Expose the base path to your client code (for <img> and CSS urls)
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isProd ? `/${repo}` : "",
+  },
 }
-
-export default nextConfig

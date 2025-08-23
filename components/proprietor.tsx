@@ -1,11 +1,14 @@
+// components/proprietor.tsx
 export function Proprietor() {
+  const prefix = process.env.NEXT_PUBLIC_BASE_PATH || ""
+
   return (
     <section id="proprietor" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-[#344458] mb-4 font-poppins">THE PROPRIETOR</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto font-inter">
-            Meet the visionary leader behind CDM Enterprise's success story.
+            Meet the visionary leader behind CDM Enterprise&apos;s success story.
           </p>
         </div>
 
@@ -19,7 +22,7 @@ export function Proprietor() {
 
             <div className="text-center mb-8">
               <p className="text-2xl text-[#c99d46] font-dancing-script font-medium mb-4">
-                "Dreamer, Believer and Achiever"
+                &quot;Dreamer, Believer and Achiever&quot;
               </p>
             </div>
 
@@ -43,13 +46,13 @@ export function Proprietor() {
             </div>
           </div>
 
-        <div className="order-1 lg:order-2 flex justify-center">
-  <img
-    src="/TestWholeImage.png"
-    alt="Cherryl Dechavez Morato - CDM Enterprise Proprietor"
-    className="w-full max-w-xl h-auto rounded-lg"
-  />
-</div>
+          <div className="order-1 lg:order-2 flex justify-center">
+            <img
+              src={`${prefix}/TestWholeImage.png`}
+              alt="Cherryl Dechavez Morato - CDM Enterprise Proprietor"
+              className="w-full max-w-xl h-auto rounded-lg"
+            />
+          </div>
         </div>
       </div>
     </section>

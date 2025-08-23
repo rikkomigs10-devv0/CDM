@@ -1,6 +1,9 @@
+// components/about.tsx
 import { Button } from "@/components/ui/button"
 
 export function About() {
+  const prefix = process.env.NEXT_PUBLIC_BASE_PATH || ""
+
   return (
     <section id="about" className="py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -33,7 +36,7 @@ export function About() {
 
           <div className="relative">
             <img
-              src="/construction-team-site.png"
+              src={`${prefix}/construction-team-site.png`}
               alt="Construction team at work"
               className="w-full h-96 object-cover rounded-lg shadow-lg"
             />
