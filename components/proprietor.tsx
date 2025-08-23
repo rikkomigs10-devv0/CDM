@@ -1,7 +1,7 @@
-// components/proprietor.tsx
-export function Proprietor() {
-  const prefix = process.env.NEXT_PUBLIC_BASE_PATH || ""
+import Image from "next/image"
+import proprietorImg from "@/public/TestWholeImage.png"
 
+export function Proprietor() {
   return (
     <section id="proprietor" className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -47,11 +47,14 @@ export function Proprietor() {
           </div>
 
           <div className="order-1 lg:order-2 flex justify-center">
-            <img
-              src={`${prefix}/TestWholeImage.png`}
-              alt="Cherryl Dechavez Morato - CDM Enterprise Proprietor"
-              className="w-full max-w-xl h-auto rounded-lg"
-            />
+            <div className="w-full max-w-xl">
+              <Image
+                src={proprietorImg}
+                alt="Cherryl Dechavez Morato - CDM Enterprise Proprietor"
+                className="w-full h-auto rounded-lg"
+                priority
+              />
+            </div>
           </div>
         </div>
       </div>

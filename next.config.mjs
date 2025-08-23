@@ -2,26 +2,24 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === "production"
 
-// 👉 Change this to your repo name exactly as it appears on GitHub.
+// 👉 EXACT repo name on GitHub:
 const repo = "CDM"
 
 export default {
-  // Use static export so we can host on GitHub Pages
+  // Next 15 static export
   output: "export",
 
-  // Make the site work from https://<user>.github.io/<repo>/
+  // Make the app work at https://<user>.github.io/<repo>/
   basePath: isProd ? `/${repo}` : "",
   assetPrefix: isProd ? `/${repo}/` : "",
 
-  // next/image must be unoptimized for static export
-  images: {
-    unoptimized: true,
-  },
+  // Required for static export
+  images: { unoptimized: true },
 
-  // Optional but helps avoid 404s on GH Pages when requesting folders
+  // Avoids folder vs file 404s on GH Pages
   trailingSlash: true,
 
-  // Expose the base path to your client code (for <img> and CSS urls)
+  // Expose basePath to client if ever needed
   env: {
     NEXT_PUBLIC_BASE_PATH: isProd ? `/${repo}` : "",
   },
