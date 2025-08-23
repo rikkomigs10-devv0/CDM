@@ -17,12 +17,15 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-4 sm:mb-6 leading-tight font-poppins">
-            Delivering tailored-fit solutions with integrity and impact.
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto font-medium font-inter">
+        <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 
+                      font-extrabold text-white mb-4 sm:mb-6 leading-tight 
+                      font-sans tracking-[2px] uppercase max-w-5xl mx-auto text-center">
+          Delivering tailored-fit solutions with integrity and impact.
+        </h1>
+
+       {/* <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto font-medium font-inter">
             Committed. Diligent. Meaningful.
-          </p>
+          </p>  */}
         </div>
       </div>
     </section>

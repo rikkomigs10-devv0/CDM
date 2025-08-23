@@ -43,13 +43,13 @@ export function Proprietor() {
             </div>
           </div>
 
-          <div className="order-1 lg:order-2 flex justify-center">
-            <img
-              src="/cdm-proprietor.png"
-              alt="Cherryl Dechavez Morato - CDM Enterprise Proprietor"
-              className="w-full max-w-md h-auto rounded-lg shadow-lg"
-            />
-          </div>
+        <div className="order-1 lg:order-2 flex justify-center">
+  <img
+    src="/TestWholeImage.png"
+    alt="Cherryl Dechavez Morato - CDM Enterprise Proprietor"
+    className="w-full max-w-xl h-auto rounded-lg"
+  />
+</div>
         </div>
       </div>
     </section>
