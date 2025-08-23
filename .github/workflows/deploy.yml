@@ -28,10 +28,10 @@ jobs:
           cache: npm
           cache-dependency-path: package-lock.json
 
-      - name: Install
+      - name: Install deps
         run: npm ci || npm install
 
-      - name: Build (Next 15 writes to ./out because output:'export')
+      - name: Build (Next 15 static export -> ./out)
         run: npm run build
 
       - name: Configure Pages
