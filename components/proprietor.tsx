@@ -3,32 +3,40 @@ import proprietorImg from "@/public/TestWholeImage.png"
 
 export function Proprietor() {
   return (
-    <section id="proprietor" className="py-20 bg-white">
+    <section id="proprietor" className="py-12 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#344458] mb-4 font-poppins">THE PROPRIETOR</h2>
+        {/* Section Heading */}
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#344458] mb-2 font-poppins">
+            THE PROPRIETOR
+          </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto font-inter">
             Meet the visionary leader behind CDM Enterprise&apos;s success story.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          {/* Left column with text */}
           <div className="order-2 lg:order-1">
-            <div className="text-center mb-8">
-              <h3 className="text-3xl font-bold text-[#344458] font-poppins">CHERRYL</h3>
-              <h3 className="text-3xl font-bold text-[#344458] font-poppins">DECHAVEZ</h3>
-              <h3 className="text-3xl font-bold text-[#344458] font-poppins">MORATO</h3>
+            {/* Name */}
+            <div className="mb-4 text-left tracking-wide"> 
+              <h3 className="text-2xl md:text-3xl font-bold text-[#344458] font-poppins">
+                CHERRYL DECHAVEZ MORATO
+              </h3>
+           
             </div>
 
-            <div className="text-center mb-8">
-              <p className="text-2xl text-[#c99d46] font-dancing-script font-medium mb-4">
+            {/* Tagline */}
+            <div className="mb-6 text-left">
+              <p className="text-xl md:text-2xl text-[#c99d46] font-dancing-script italic font-medium">
                 &quot;Dreamer, Believer and Achiever&quot;
               </p>
             </div>
 
-            <div className="space-y-6 text-gray-700 font-inter">
+            {/* Bio */}
+            <div className="space-y-4 text-gray-700 font-inter text-left">
               <p className="leading-relaxed">
-                CDM Enterprise was founded by Cherryl D. Morato a determined entrepreneur from Mauban, Quezon, whose
+                CDM Enterprise was founded by Cherryl D. Morato, a determined entrepreneur from Mauban, Quezon, whose
                 business journey began at the age of 11.
               </p>
               <p className="leading-relaxed">
@@ -40,14 +48,15 @@ export function Proprietor() {
                 effort, prayer, and resilience, she transformed a small dream into a thriving enterprise.
               </p>
               <p className="leading-relaxed">
-                Now over two decades later, her leadership continues to guide CDM Enterprise—grounded in values,
+                Now over two decades later, her leadership continues to guide CDM Enterprise — grounded in values,
                 strengthened by experience, and committed to delivering quality service with purpose and gratitude.
               </p>
             </div>
           </div>
 
+          {/* Right column with image */}
           <div className="order-1 lg:order-2 flex justify-center">
-            <div className="w-full max-w-xl">
+            <div className="w-full max-w-md">
               <Image
                 src={proprietorImg}
                 alt="Cherryl Dechavez Morato - CDM Enterprise Proprietor"
