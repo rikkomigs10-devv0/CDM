@@ -6,14 +6,13 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 
-// ✅ Import images from /public so Next resolves correct URLs (incl. basePath on GH Pages)
+// Import images from /public (these paths must exist exactly, case-sensitive)
 import imgOffice from "@/public/downtown-office-complex.png"
 import imgLuxury from "@/public/luxury-apartment-construction.png"
 import imgBridge from "@/public/highway-bridge-construction.png"
 import imgMall from "@/public/shopping-mall-construction.png"
 import imgHousing from "@/public/residential-construction.png"
 import imgIndustrial from "@/public/industrial-warehouse-construction.png"
-import imgPlaceholder from "@/public/placeholder.svg" // keep as fallback
 
 type Project = {
   title: string
@@ -85,7 +84,7 @@ export function Portfolio() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <Card
-                key={index}
+                key={project.title}
                 className="group overflow-hidden border-0 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
@@ -93,7 +92,7 @@ export function Portfolio() {
               >
                 <div className="relative overflow-hidden">
                   <Image
-                    src={project.image || imgPlaceholder}
+                    src={project.image}
                     alt={project.title}
                     width={400}
                     height={256}
@@ -137,7 +136,7 @@ export function Portfolio() {
               <div className="flex flex-col md:flex-row min-h-[70vh] sm:min-h-[80vh]">
                 <div className="md:w-2/3 relative h-64 sm:h-80 md:h-auto">
                   <Image
-                    src={selectedProject.image || imgPlaceholder}
+                    src={selectedProject.image}
                     alt={selectedProject.title}
                     fill
                     className="object-cover h-full w-full rounded-t-lg md:rounded-l-lg md:rounded-tr-none"
